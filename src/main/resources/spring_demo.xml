@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    
+    <!-- Define SprigDemo and inject SpringDemochild -->
+        <!-- By default scope is singleton if we need multiple objects then we need to include prototype -->
+   <!-- <bean id="sprngDemo" class="com.roopaLearning.SpringFirstDemo.bean.SprigDemo">
+        <property name="demo" ref="springDemochild" /></bean>
+    <bean id="springDemochild" class="com.roopaLearning.SpringFirstDemo.bean.SpringDemochild" /> -->
+    
+    <!-- This way you use property but there is other way called autowired-->
+<!--<bean id="sprngDemo" class="com.roopaLearning.SpringFirstDemo.bean.SprigDemo" scope="prototype">-->
+<!-- Property Injection -->
+<!--<property name="age" value="10"></property>-->
+<!-- Constructor Injection -->
+<!--<constructor-arg value="12"></constructor-arg>-->
+<!--		<property name="age" value="10"></property>-->
+<!--        <property name="springDemochild" ref="springDemochild" />-->
+<!--        <property name="springDemochild2" ref="springDemochild2" />-->
+<!--</bean>-->
+<!--    <bean id="springDemochild" class="com.roopaLearning.SpringFirstDemo.bean.SpringDemochild" scope="prototype"/>-->
+<!--    <bean id="springDemochild2" class="com.roopaLearning.SpringFirstDemo.bean.SpringDemochild2" scope="prototype"/>-->
+    
+    <!-- byname is connected through the id specified but both name and id must be same for different it won't work -->
+   <!-- <bean id="sprngDemo" class="com.roopaLearning.SpringFirstDemo.bean.SprigDemo" scope="prototype" autowire="byName">-->
+   <!-- Bytype searches for the type of the object example the class itself instead of the refernce name so you don't need to create another bean class again down-->
+        <bean id="sprngDemo" class="com.roopaLearning.SpringFirstDemo.bean.SprigDemo" scope="prototype" autowire="byType">
+<!-- Property Injection -->
+<!--<property name="age" value="10"></property>-->
+<!-- Constructor Injection -->
+<!--<constructor-arg value="12"></constructor-arg>-->
+		<property name="age" value="10"></property>
+	<!-- You don't need to create this property when you give autowired
+	which means when a bean is there then it will automically decide which bean class is needed(Only when bean is available you have to connect
+	But this method works only for one bean-->	
+		<!-- See here we have given springDemochild so complie will go for this will be for that 
+		you can also change reference to springDemochild2
+		When giving property it doesn't even go to autowire it will automatically choose the refernce we have given-->
+<!--<property name="springInterfaceDemo" ref="springDemochild"></property>-->
+
+</bean>
+
+    <bean id="springDemochild" class="com.roopaLearning.SpringFirstDemo.bean.SpringDemochild" scope="prototype" primary="true"/>
+    <bean id="springDemochild2" class="com.roopaLearning.SpringFirstDemo.bean.SpringDemochild2" scope="prototype"/>
+</beans>
